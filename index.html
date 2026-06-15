@@ -399,9 +399,9 @@
     return false;
   }
   function buildPlayersList() {
-    return PLAYERS.map(function (p) {
-      return "- [" + (state.players[p.id] ? "x" : " ") + "] " + p.char + " (" + p.player + ")";
-    }).join("\n");
+    return PLAYERS.filter(function (p) { return state.players[p.id]; })
+      .map(function (p) { return "- " + p.char + " (" + p.player + ")"; })
+      .join("\n");
   }
   function sectionHasContent(t) {
     if (t.kind === "players") return anyPlayerChecked();
